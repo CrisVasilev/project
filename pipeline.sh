@@ -4,7 +4,7 @@ set -e
 
 #########BUILD############
 
-image_name=058302395964.dkr.ecr.eu-central-1.amazonaws.com/pragmflask
+image_name=094003091367.dkr.ecr.eu-central-1.amazonaws.com/pragmflask
 docker build -t $image_name:$GIT_COMMIT .
 port=$(shuf -i 3000-10000 -n 1)
 container_name=$(echo $RANDOM)
@@ -21,7 +21,7 @@ else echo "FAILED TESTS" && docker stop $container_name && exit 1
 fi
 
 #########PUSH##############
-docker login -u AWS https://058302395964.dkr.ecr.eu-central-1.amazonaws.com -p $(aws ecr get-login-password --region eu-central-1)
+docker login -u AWS https://094003091367.dkr.ecr.eu-central-1.amazonaws.com/pragmflask -p $(aws ecr get-login-password --region eu-central-1)
 docker push $image_name:$GIT_COMMIT
 
 ########DEPLOY############

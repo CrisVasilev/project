@@ -26,3 +26,4 @@ docker push $image_name:$GIT_COMMIT
 
 ########DEPLOY############
 helm upgrade flask helm/ --atomic --wait --install --set deployment.tag=$GIT_COMMIT
+kubectl port-forward --address 0.0.0.0 svc/flask-svc 5000:5000 &
